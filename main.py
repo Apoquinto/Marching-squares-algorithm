@@ -1,9 +1,9 @@
 import pygame, sys
 import random
 def generateState( cellsX, cellsY, state ):
-	for line in range( cellsY ):
+	for line in range( cellsY + 1 ):
 		state.append( [ ] )
-		for cell in range( cellsX ):
+		for cell in range( cellsX + 1 ):
 			state[ line ].append( random.randint(0, 1) )
 
 def generateImage( screen, cellsX, cellsY, cellSize, notActive, state ):
@@ -13,9 +13,10 @@ def generateImage( screen, cellsX, cellsY, cellSize, notActive, state ):
 					( ( x + 0.6 ) * cellSize, ( y + 0.4 ) 	  * cellSize ),
 					( ( x + 0.6 ) * cellSize, ( y + 0.6 ) * cellSize ),
 					( ( x + 0.4 ) * cellSize, 	( y + 0.6 ) * cellSize ) ]
-			
+			'''
 			if( state[ y ][ x ] == 0 ):
 				pygame.draw.polygon( screen, notActive, poly, 0 )
+			'''
 
 def getValor( a, b, c, d ):
 	return 8 * a + 4 * b + 2 * c + 1 * d
@@ -24,8 +25,8 @@ def paintLine( screen, a, b, outline ):
 	pygame.draw.line(screen, outline, a, b, 2)
 
 def marchingSquares( screen, cellsX, cellsY, cellSize, outline, state  ):
-	for y in range( cellsY - 1 ):
-		for x in range( cellsX - 1 ):
+	for y in range( cellsY ):
+		for x in range( cellsX ):
 			val = getValor( ( state[ y ][ x ] ), 
 						  ( state[ y ][ x + 1 ] ), 
 						  ( state[ y + 1 ][ x + 1 ] ), 
