@@ -9,10 +9,10 @@ def generateState( cellsX, cellsY, state ):
 def generateImage( screen, cellsX, cellsY, cellSize, notActive, state ):
 	for y in range( cellsY ):
 		for x in range( cellsX ):
-			poly = [ ( ( x ) 	   * cellSize, ( y ) 	 * cellSize ),
-					 ( ( x ) 	   * cellSize, ( y + 1 ) * cellSize ),
-					 ( ( x + 1 ) * cellSize,   ( y ) 	 * cellSize ),
-					 ( ( x + 1 ) * cellSize,   ( y + 1 ) * cellSize )]
+			poly = [( ( x ) * cellSize, 	( y )     * cellSize ),
+					( ( x + 1 ) * cellSize, ( y ) 	  * cellSize ),
+					( ( x + 1 ) * cellSize, ( y + 1 ) * cellSize ),
+					( ( x ) * cellSize, 	( y + 1 ) * cellSize ) ]
 
 			if( state[ y ][ x ] == 0 ):
 				pygame.draw.polygon( screen, notActive, poly, 0 )
@@ -31,8 +31,8 @@ def main():
 
 	# -| screen |-
 
-	cellsX, cellsY = 10, 6
-	cellSize = 100
+	cellsX, cellsY = 50, 50
+	cellSize = 10
 	size = ( cellsX * cellSize, cellsY * cellSize )
 	screen = pygame.display.set_mode( size )
 
